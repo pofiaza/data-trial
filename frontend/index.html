@@ -5,15 +5,21 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('myChart');
+  fetch("months.json")
+    .then(response => response.json())
+    .then(months => {
+    const labels = Object.keys(months);
+    const values = Object.values(months);
+  
+const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'],
+      labels: labels,
       datasets: [{
         label: '# read',
-        data: [172, 198, 180, 152, 101, 116, 105, 71, 0, 0, 0, 0],
+        data: values,
         borderWidth: 1
       }]
     },
