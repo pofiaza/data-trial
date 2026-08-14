@@ -1,36 +1,52 @@
-<div>
-  <canvas id="myChart"></canvas>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>fanfic data</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <body>
 
-<script>
-const ctx = document.getElementById('myChart');
+        <div id=months-chart>
+          <canvas id="myChart"></canvas>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+        const ctx = document.getElementById('myChart');
+          
+          fetch("months.json")
+            .then(response => response.json())
+            .then(months => {
+            const labels = Object.keys(months);
+            const values = Object.values(months);
+          
+        
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: labels,
+                datasets: [{
+                  label: '# read',
+                  data: values,
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          });
+        </script>
+
+        
+    </body>
   
-  fetch("months.json")
-    .then(response => response.json())
-    .then(months => {
-    const labels = Object.keys(months);
-    const values = Object.values(months);
-  
+</html>
 
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: '# read',
-          data: values,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  });
-</script>
+
