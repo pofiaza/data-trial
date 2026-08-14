@@ -48,7 +48,7 @@
         </script>
 
         <script>
-        const ctx = document.getElementById('fandomsChart');
+        const ctx2 = document.getElementById('fandomsChart');
           
           fetch("fandoms.json")
             .then(response => response.json())
@@ -57,12 +57,12 @@
             const values = Object.values(fandoms);
           
         
-            new Chart(ctx, {
+            new Chart(ctx2, {
               type: 'bar',
               data: {
                 labels: labels,
                 datasets: [{
-                  label: '# read',
+                  label: 'fandoms',
                   data: values,
                   borderWidth: 1
                 }]
