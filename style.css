@@ -11,7 +11,7 @@
 } */
 
 #fandoms-chart {
-  width: 800px;
-  height: 500px;
+  width: 500px;
+  height: 200px;
   overflow-x: auto;
 }
